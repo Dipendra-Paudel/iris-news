@@ -1,0 +1,32 @@
+.close-icon {
+  height: 26px;
+  width: 32px;
+}
+.close-icon > div {
+  @apply w-8 h-1 bg-gray-700 absolute;
+  top: 11px;
+}
+.close-icon > div:nth-child(1) {
+  transform: rotate(45deg);
+}
+.close-icon > div:nth-child(2) {
+  transform: rotate(-45deg);
+}
+
+.hamburger-menu {
+  height: 26px;
+  width: 32px;
+}
+.hamburger-menu > div {
+  @apply w-8 h-1 bg-gray-700 transition-all duration-500 absolute right-0;
+}
+.hamburger-menu > div:nth-child(1) {
+  top: 0;
+}
+.hamburger-menu > div:nth-child(2) {
+  top: 5px;
+}
+
+.hamburger-menu > div:nth-child(3) {
+  top: 14px;
+}
