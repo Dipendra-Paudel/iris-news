@@ -23,29 +23,31 @@ const socialSites = [
 
 const TopBar = () => {
   return (
-    <div>
-      <div className="flex justify-between items-center py-2 px-4 border-b text-sm">
-        <div className="flex items-center space-x-2">
-          <div>
-            <CalendarIcon width={iconWidth} />
+    <div className="common-style border-b">
+      <div className="common-style-2">
+        <div className="flex justify-between items-center pt-3 pb-2 space-x-4 text-sm">
+          <div className="flex items-center space-x-2">
+            <div>
+              <CalendarIcon width={iconWidth} />
+            </div>
+            <div>Tuesday, 5 October 2021</div>
           </div>
-          <div>Tuesday, 5 October 2021</div>
-        </div>
-        <div className="flex text-gray-700 space-x-2">
-          {socialSites.map((site, index) => {
-            const { icon, url } = site;
-            return (
-              <a
-                key={index}
-                href={url}
-                target="_blank"
-                rel="noreferrer"
-                className={index === socialSites.length - 1 ? "pl-1.5" : ""}
-              >
-                {icon}
-              </a>
-            );
-          })}
+          <div className="flex text-gray-700 space-x-4">
+            {socialSites.map((site, index) => {
+              const { icon, url } = site;
+              return (
+                <a
+                  key={index}
+                  href={url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={index === socialSites.length - 1 ? "pl-1" : ""}
+                >
+                  {icon}
+                </a>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

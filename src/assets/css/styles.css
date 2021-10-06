@@ -4,3 +4,23 @@ select:focus,
 textarea:focus {
   outline: none;
 }
+
+.common-style {
+  @apply px-6 md:px-10 lg:px-16;
+}
+.common-style-2 {
+  @apply max-w-screen-2xl mx-auto;
+}
+
+.infinite-round {
+  animation: infiniteRound 0.8s linear infinite;
+}
+
+@keyframes infiniteRound {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform: rotateZ(-360deg);
+  }
+}
