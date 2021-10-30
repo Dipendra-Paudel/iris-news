@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Navigation from "./components/static/Navigation";
 import TopBar from "./components/static/TopBar";
-import Home from "./components/home/Home";
+import Home from "./components/home/home";
 import Category from "./components/category/Category";
 import Footer from "./components/static/Footer";
 import { getCategories } from "./api/category";
