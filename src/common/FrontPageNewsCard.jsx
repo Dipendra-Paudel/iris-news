@@ -1,32 +1,59 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import capitalize from "../utils/capitalize";
 
 const FrontPageNewsCard = ({
   image,
-  heading,
+  title,
   category,
-  description,
-  uploaded_at,
+  createdAt,
   type,
+  slug,
 }) => {
+  const date = new Date(createdAt);
+  const day = date.getDate();
+  const month = date.toLocaleDateString("default", { month: "long" });
+  const year = date.getFullYear();
+
+  const isHomepage = window.location.pathname === "/";
+
   return (
-    <Link
-      to="/news/detail"
-      onClick={() => window.scrollTo(0, 0)}
-      className={`relative block h-56 md:${type === "l1" ? "h-96" : "h-48"}`}
+    <div
+      className={`relative border block w-full h-56 md:${
+        type === "l1" ? "h-97" : "h-48"
+      }`}
     >
-      <img src={image} alt={heading} className="w-full h-full object-cover" />
-      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-30  text-gray-200">
-        <div className="font-semibold bg-yellow-600 inline-block px-4 py-1 ml-4 mt-4 text-sm">
-          {category}
+      <Link
+        to={`/news/${slug}`}
+        className="w-full h-full"
+        onClick={() => window.scrollTo(0, 0)}
+      >
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover object-left-top"
+        />
+        <div className="absolute top-0 left-0 w-full h-full text-white">
+          {isHomepage && category && (
+            <div className="font-semibold bg-yellow-600 inline-block absolute right-0 px-4 py-1 text-sm">
+              {capitalize(category.categoryName)}
+            </div>
+          )}
+          <div className="absolute bottom-0 left-0 w-full flex flex-col">
+            <div>
+              <div className="text-sm bg-black bg-opacity-50 inline-block p-1">
+                {`${month} ${day}, ${year}`}
+              </div>
+            </div>
+            <div className="overflow-hidden">
+              <div className="truncate text-2xl font-semibold bg-black bg-opacity-50 p-1 mt-1">
+                {title}
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="absolute bottom-0 left-0 w-full p-4">
-          <div className="text-sm">{uploaded_at}</div>
-          <div className="text-2xl font-semibold text-white">{heading}</div>
-          <div className="text-xs">{description}</div>
-        </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

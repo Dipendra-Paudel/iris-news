@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-import logo from "../../assets/images/logo.png";
+import capitalize from "../../utils/capitalize";
+import logo from "../../assets/images/logo.jpg";
 
-const Sidebar = ({ toggled, options, changeToggled }) => {
+const Sidebar = ({ toggled, categories, changeToggled }) => {
   const handleSidebarLinkClick = () => {
     changeToggled(false);
     window.scrollTo(0, 0);
@@ -11,7 +12,7 @@ const Sidebar = ({ toggled, options, changeToggled }) => {
 
   return (
     <div
-      className={`text-gray-600 overflow-hidden bg-gray-100 fixed top-0 left-0 z-50 transition-all duration-500 h-screen sidebar ${
+      className={`text-gray-600 overflow-hidden bg-background fixed top-0 left-0 z-50 transition-all duration-500 h-screen sidebar ${
         toggled ? "w-full" : "w-0"
       }`}
     >
@@ -22,7 +23,7 @@ const Sidebar = ({ toggled, options, changeToggled }) => {
             style={{ minWidth: "300px" }}
           >
             <Link to="/">
-              <img src={logo} alt="Iris News Logo" className="w-28 mx-auto" />
+              <img src={logo} alt="Iris News Logo" className="h-28 mx-auto" />
             </Link>
             <div onClick={() => changeToggled(false)}>
               <CloseIcon style={{ fontSize: "40px" }} />
@@ -31,19 +32,19 @@ const Sidebar = ({ toggled, options, changeToggled }) => {
         </div>
 
         <div className="px-6 pt-4 flex flex-col space-y-4">
-          {options.map((option, index) => {
-            const { title, url } = option;
+          {categories.map((category, index) => {
+            const { categoryName, slug } = category;
 
             return (
               <NavLink
                 key={index}
-                to={url}
+                to={categoryName === "Home" ? "/" : `/category/${slug}`}
                 onClick={handleSidebarLinkClick}
                 activeClassName="text-blue-600 "
                 className="font-semibold border-b border-gray-200 text-gray-500"
                 exact
               >
-                {title}
+                {categoryName === "Home" ? "Home" : capitalize(categoryName)}
               </NavLink>
             );
           })}

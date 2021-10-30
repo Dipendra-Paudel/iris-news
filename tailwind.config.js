@@ -6,6 +6,10 @@ module.exports = {
       colors: {
         primary: "",
         secondary: "",
+        background: "rgb(253, 253, 253)",
+      },
+      height: {
+        97: "24.2rem",
       },
     },
   },

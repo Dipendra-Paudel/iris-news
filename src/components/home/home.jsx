@@ -1,72 +1,59 @@
-import React from "react";
-import FrontPageNewsCard from "../../common/FrontPageNewsCard";
-
-// images
-import image1 from "../../assets/images/sports/image-1.webp";
-import image2 from "../../assets/images/sports/image-2.jpg";
-import image3 from "../../assets/images/sports/image-3.jpg";
-import image4 from "../../assets/images/sports/image-4.webp";
-
-const news = [
-  {
-    heading: "IPL Playoffs",
-    image: image1,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, ratione.Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, ratione.Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, ratione.",
-    category: "Sports",
-    uploaded_at: "Oct 27, 2020",
-  },
-  {
-    heading: "IPL Playoffs",
-    image: image2,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, ratione.",
-    category: "Sports",
-    uploaded_at: "Oct 27, 2020",
-  },
-  {
-    heading: "IPL Playoffs",
-    image: image3,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, ratione.",
-    category: "Sports",
-    uploaded_at: "Oct 27, 2020",
-  },
-  {
-    heading: "IPL Playoffs",
-    image: image4,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, ratione.",
-    category: "Sports",
-    uploaded_at: "Oct 27, 2020",
-  },
-];
-
-const commonClass = "space-y-1 md:space-y-0 md:flex";
+import React, { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import MainPage from "./Mainpage";
+import Content from "./Content";
+import Container from "../../common/Container";
+import { getTrendingNews } from "../../api/news";
+import { ADD_TRENDING_NEWS } from "../../store/actions/actionTypes";
+import Loader from "../../common/loader";
 
 const Home = () => {
-  return (
-    <div className="common-style py-4">
-      <div className="common-style-2">
-        <div className={`${commonClass} md:space-x-1`}>
-          <div className="flex-1">
-            <FrontPageNewsCard {...news[0]} type="l1" />
-          </div>
-          <div className={`flex-1 flex-col ${commonClass} md:space-y-1`}>
-            <div className="flex-1">
-              <FrontPageNewsCard {...news[1]} />
-            </div>
-            <div className={`${commonClass} md:space-x-1`}>
-              <div className="flex-1">
-                <FrontPageNewsCard {...news[2]} />
-              </div>
-              <div className="flex-1">
-                <FrontPageNewsCard {...news[3]} />
-              </div>
-            </div>
-          </div>
-        </div>
+  const dispatch = useRef();
+  dispatch.current = useDispatch();
+  const storedTrendingNews = useSelector((store) => store.trendingNews);
+
+  const [trendingNews, setTrendingNews] = useState(() =>
+    storedTrendingNews && storedTrendingNews.length > 0
+      ? storedTrendingNews
+      : []
+  );
+
+  console.log(trendingNews);
+
+  const newsLength = trendingNews.length;
+  const [loading, setLoading] = useState(() => newsLength === 0);
+
+  useEffect(() => {
+    const getNews = async () => {
+      const { news } = await getTrendingNews("", 4);
+      setTrendingNews(news);
+
+      if (news.length > 0) {
+        dispatch.current({
+          type: ADD_TRENDING_NEWS,
+          payload: {
+            news,
+          },
+        });
+      }
+      setLoading(false);
+    };
+
+    newsLength === 0 && getNews();
+  }, [newsLength]);
+
+  if (loading) {
+    return (
+      <div className="py-20 grid place-items-center">
+        <Loader />
       </div>
+    );
+  }
+
+  return (
+    <div>
+      {trendingNews.length > 0 && <MainPage news={trendingNews} />}
+      <Container component={<Content />} />
     </div>
   );
 };

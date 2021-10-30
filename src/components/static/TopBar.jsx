@@ -21,6 +21,11 @@ const socialSites = [
   },
 ];
 
+const date = new Date();
+const day = date.getDate();
+const month = date.toLocaleDateString("default", { month: "long" });
+const year = date.getFullYear();
+
 const TopBar = () => {
   return (
     <div className="common-style border-b">
@@ -30,7 +35,7 @@ const TopBar = () => {
             <div>
               <CalendarIcon width={iconWidth} />
             </div>
-            <div>Tuesday, 5 October 2021</div>
+            <div>{`${month} ${day}, ${year}`}</div>
           </div>
           <div className="flex text-gray-700 space-x-4">
             {socialSites.map((site, index) => {
