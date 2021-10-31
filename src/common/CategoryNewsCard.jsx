@@ -14,7 +14,7 @@ const CategoryNewsCard = ({ image, title, content, createdAt, slug }) => {
     <div className="flex-1 md:flex md:space-x-5">
       <div className="relative flex-1">
         <img
-          src={image}
+          src={`https://pacific-hamlet-93409.herokuapp.com${image}`}
           alt={title}
           className="w-full h-56 object-cover object-left-top"
         />

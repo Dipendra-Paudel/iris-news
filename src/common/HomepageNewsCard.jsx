@@ -19,7 +19,7 @@ const HomePageNewsCard = ({
     <div className="overflow-hidden">
       <div className="relative">
         <img
-          src={image}
+          src={`https://pacific-hamlet-93409.herokuapp.com${image}`}
           alt={title}
           className="w-full h-56 object-cover object-left-top"
         />

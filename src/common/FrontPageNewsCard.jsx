@@ -29,7 +29,7 @@ const FrontPageNewsCard = ({
         onClick={() => window.scrollTo(0, 0)}
       >
         <img
-          src={image}
+          src={`https://pacific-hamlet-93409.herokuapp.com${image}`}
           alt={title}
           className="w-full h-full object-cover object-left-top"
         />

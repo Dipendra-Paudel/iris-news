@@ -4,7 +4,7 @@ export const getTrendingNews = async (category = "", limit = 4, page = 1) => {
     nextPage: false,
   };
   await fetch(
-    `/api/news/trending?category=${category}&limit=${limit}&page=${page}`,
+    `https://pacific-hamlet-93409.herokuapp.com/api/news/trending?category=${category}&limit=${limit}&page=${page}`,
     {
       method: "GET",
     }
@@ -28,7 +28,9 @@ export const getNews = async (category = "", limit = 4, page = 1) => {
     news: [],
     nextPage: false,
   };
-  await fetch(`/api/news?category=${category}&limit=${limit}&page=${page}`)
+  await fetch(
+    `https://pacific-hamlet-93409.herokuapp.com/api/news?category=${category}&limit=${limit}&page=${page}`
+  )
     .then(async (res) => {
       const { status, data } = await res.json();
       if (status === "success") {
@@ -49,7 +51,9 @@ export const searchNews = async (value, limit = 8, page = 1) => {
     nextPage: false,
   };
 
-  await fetch(`/api/news/search?value=${value}&limit=${limit}&page=${page}`)
+  await fetch(
+    `https://pacific-hamlet-93409.herokuapp.com/api/news/search?value=${value}&limit=${limit}&page=${page}`
+  )
     .then(async (res) => {
       const { status, data } = await res.json();
       if (status === "success") {
@@ -67,7 +71,7 @@ export const searchNews = async (value, limit = 8, page = 1) => {
 
 export const getIndividualNews = async (slug) => {
   let news = null;
-  await fetch(`/api/news/${slug}`)
+  await fetch(`https://pacific-hamlet-93409.herokuapp.com/api/news/${slug}`)
     .then(async (res) => {
       const { status, data } = await res.json();
       if (status === "success") {
