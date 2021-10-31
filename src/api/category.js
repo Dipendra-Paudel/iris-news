@@ -1,6 +1,6 @@
 export const getCategories = async () => {
   let categories;
-  await fetch("https://pacific-hamlet-93409.herokuapp.com/api/category", {
+  await fetch("/api/category", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
