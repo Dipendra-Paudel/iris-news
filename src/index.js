@@ -9,7 +9,9 @@ import "./assets/css/styles.css";
 import "./assets/css/icons.css";
 import "./assets/css/loader.css";
 
-if (window.self === window.top) {
+if (!window.location.href.startsWith("https")) {
+  window.location = window.location.pathname.replace("http", "https");
+} else if (window.self === window.top) {
   ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
