@@ -19,6 +19,6 @@ textarea:focus {
   @apply text-xl font-semibold text-gray-700;
 }
 
-.h-97 {
+.md\:h-97 {
   height: 24.2rem;
 }
