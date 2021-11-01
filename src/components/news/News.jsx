@@ -4,6 +4,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { getIndividualNews } from "../../api/news";
 import Loader from "../../common/loader";
 import capitalize from "../../utils/capitalize";
+import { baseUrl } from "../auth/auth";
 
 const News = (props) => {
   const history = useRef();
@@ -21,8 +22,6 @@ const News = (props) => {
 
     loading && asyncIndividualNews();
   }, [loading, slug]);
-
-  console.log(news);
 
   useEffect(() => {
     !news && !loading && history.current.push("/not-found");
@@ -57,8 +56,11 @@ const News = (props) => {
     <div className="common-style py-10">
       <div className="common-style-2">
         <div className="space-y-4">
+          <div className="font-bold text-3xl text-gray-800 pb-3">
+            {capitalize(title)}
+          </div>
           <div>
-            <img src={image} alt={title} className="w-full" />
+            <img src={`${baseUrl}${image}`} alt={title} className="w-full" />
 
             <div className="text-sm text-gray-700 flex items-center space-x-1 pt-2">
               <AccessTimeIcon style={{ fontSize: "20px" }} />
@@ -71,9 +73,6 @@ const News = (props) => {
             </div>
           </div>
           <div>
-            <div className="font-bold text-xl text-gray-800 pb-3">
-              {capitalize(title)}
-            </div>
             <div className="text-justify">{content}</div>
           </div>
         </div>

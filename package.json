@@ -1,5 +1,4 @@
 {
-  "proxy": "https://pacific-hamlet-93409.herokuapp.com",
   "name": "iris-news",
   "version": "0.1.0",
   "private": true,

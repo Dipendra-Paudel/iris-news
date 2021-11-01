@@ -1,6 +1,7 @@
 import React from "react";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { LinkButton } from "./button";
+import { baseUrl } from "../components/auth/auth";
 
 const CategoryNewsCard = ({ image, title, content, createdAt, slug }) => {
   content = content.length > 150 ? `${content.slice(0, 150)}...` : content;
@@ -14,7 +15,7 @@ const CategoryNewsCard = ({ image, title, content, createdAt, slug }) => {
     <div className="flex-1 md:flex md:space-x-5">
       <div className="relative flex-1">
         <img
-          src={`https://pacific-hamlet-93409.herokuapp.com${image}`}
+          src={`${baseUrl}${image}`}
           alt={title}
           className="w-full h-56 object-cover object-left-top"
         />

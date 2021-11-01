@@ -18,8 +18,6 @@ const Home = () => {
       : []
   );
 
-  console.log(trendingNews);
-
   const newsLength = trendingNews.length;
   const [loading, setLoading] = useState(() => newsLength === 0);
 

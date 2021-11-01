@@ -1,6 +1,7 @@
 import React from "react";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { LinkButton } from "./button";
+import { baseUrl } from "../components/auth/auth";
 
 const HomePageNewsCard = ({
   image,
@@ -19,7 +20,7 @@ const HomePageNewsCard = ({
     <div className="overflow-hidden">
       <div className="relative">
         <img
-          src={`https://pacific-hamlet-93409.herokuapp.com${image}`}
+          src={`${baseUrl}${image}`}
           alt={title}
           className="w-full h-56 object-cover object-left-top"
         />

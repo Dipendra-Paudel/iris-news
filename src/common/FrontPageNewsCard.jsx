@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../components/auth/auth";
 import capitalize from "../utils/capitalize";
 
 const FrontPageNewsCard = ({
@@ -29,7 +30,7 @@ const FrontPageNewsCard = ({
         onClick={() => window.scrollTo(0, 0)}
       >
         <img
-          src={`https://pacific-hamlet-93409.herokuapp.com${image}`}
+          src={`${baseUrl}${image}`}
           alt={title}
           className="w-full h-full object-cover object-left-top"
         />
