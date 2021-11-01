@@ -20,8 +20,8 @@ const FrontPageNewsCard = ({
 
   return (
     <div
-      className={`relative border block w-full h-56 md:${
-        type === "l1" ? "h-97" : "h-48"
+      className={`relative border block w-full ${
+        type === "l1" ? "h-big" : "h-small"
       }`}
     >
       <Link
@@ -47,7 +47,7 @@ const FrontPageNewsCard = ({
               </div>
             </div>
             <div className="overflow-hidden">
-              <div className="truncate text-2xl font-semibold bg-black bg-opacity-50 p-1 mt-1">
+              <div className="truncate text-2xl font-semibold bg-black bg-opacity-50 p-1">
                 {title}
               </div>
             </div>

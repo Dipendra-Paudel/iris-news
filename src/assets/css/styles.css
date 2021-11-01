@@ -19,6 +19,16 @@ textarea:focus {
   @apply text-xl font-semibold text-gray-700;
 }
 
-.md\:h-97 {
-  height: 24.2rem;
+.h-big,
+.h-small {
+  height: 300px;
+}
+
+@media only screen and (min-width: 768px) {
+  .h-big {
+    height: 404px;
+  }
+  .h-small {
+    height: 200px;
+  }
 }

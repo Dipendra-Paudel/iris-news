@@ -11,17 +11,17 @@ const MainPage = ({ news = [] }) => {
     <div className="common-style py-4">
       <div className="common-style-2">
         {news.length === 4 && (
-          <div className={`${commonClass} md:space-x-0.5`}>
+          <div className={`${commonClass} md:space-x-1`}>
             <div className="flex-1">
               <FrontPageNewsCard {...news[0]} type="l1" />
             </div>
             <div
-              className={`flex-1 flex-col ${commonClass} md:space-y-0.5 justify-between`}
+              className={`flex-1 flex-col ${commonClass} md:space-y-1 justify-between`}
             >
-              <div className="flex-1">
+              <div className="flex-1 h-full">
                 <FrontPageNewsCard {...news[1]} />
               </div>
-              <div className={`${commonClass} md:space-x-0.5 flex-1`}>
+              <div className={`${commonClass} md:space-x-1 flex-1`}>
                 <div className="flex-1">
                   <FrontPageNewsCard {...news[2]} />
                 </div>
@@ -34,12 +34,12 @@ const MainPage = ({ news = [] }) => {
         )}
 
         {news.length === 3 && (
-          <div className={`${commonClass} md:space-x-0.5`}>
+          <div className={`${commonClass} md:space-x-1`}>
             <div className="flex-1">
               <FrontPageNewsCard {...news[0]} type="l1" />
             </div>
             <div
-              className={`flex-1 flex-col ${commonClass} md:space-y-0.5 justify-between`}
+              className={`flex-1 flex-col ${commonClass} md:space-y-1 justify-between`}
             >
               <div className="flex-1">
                 <FrontPageNewsCard {...news[1]} />
@@ -52,7 +52,7 @@ const MainPage = ({ news = [] }) => {
         )}
 
         {news.length === 2 && (
-          <div className={`${commonClass} md:space-x-0.5`}>
+          <div className={`${commonClass} md:space-x-1`}>
             <div className="flex-1">
               <FrontPageNewsCard {...news[0]} type="l1" />
             </div>
@@ -63,13 +63,13 @@ const MainPage = ({ news = [] }) => {
         )}
 
         {news.length === 1 && (
-          <div className={`${commonClass} md:space-x-0.5`}>
+          <div className={`${commonClass} md:space-x-1`}>
             <FrontPageNewsCard {...news[0]} type="l1" />
           </div>
         )}
 
         {/* Two ads */}
-        <div className="space-y-1 md:space-y-0 md:flex md:space-x-0.5 mt-4">
+        <div className="space-y-1 md:space-y-0 md:flex md:space-x-1 mt-4">
           <div className="flex-1">
             <img src={ad2} alt="News ad" className="w-full h-24" />
           </div>
