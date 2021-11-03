@@ -4,11 +4,11 @@ import { useSelector } from "react-redux";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../../assets/images/logo.jpg";
-// import ad1 from "../../assets/images/ads/ad-2.gif";
+import ad1 from "../../assets/images/ads/ad-2.gif";
 import Sidebar from "./Sidebar";
 import capitalize from "../../utils/capitalize";
 import searchQuery from "../../utils/searchQuery";
-import GoogleAds from "../../common/GoogleAds";
+// import GoogleAds from "../../common/GoogleAds";
 
 const Navigation = () => {
   const history = useHistory();
@@ -85,11 +85,11 @@ const Navigation = () => {
 
           {/* Place for ad */}
           <div className="flex-1">
-            <div className="w-full h-20 flex">
-              <GoogleAds slot="2434444" />
-            </div>
+            {/* <div className="w-full h-20 flex">
+              <GoogleAds slot="7806394673" />
+            </div> */}
 
-            {/* <img src={ad1} alt="Ad" className="w-full h-20" /> */}
+            <img src={ad1} alt="Ad" className="w-full h-20" />
           </div>
         </div>
 
