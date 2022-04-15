@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
+import parse from "html-react-parser";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { getIndividualNews } from "../../api/news";
 import Loader from "../../common/loader";
 import capitalize from "../../utils/capitalize";
-import { baseUrl } from "../auth/auth";
+
+const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 const News = (props) => {
   const history = useRef();
@@ -39,13 +41,7 @@ const News = (props) => {
     return <div></div>;
   }
 
-  const {
-    title,
-    image,
-    createdAt,
-    category: { categoryName },
-    content,
-  } = news;
+  const { title, image, createdAt, content } = news;
 
   const date = new Date(createdAt);
   const day = date.getDate();
@@ -56,9 +52,6 @@ const News = (props) => {
     <div className="common-style py-10">
       <div className="common-style-2">
         <div className="space-y-4">
-          <div className="font-bold text-3xl text-gray-800 pb-3">
-            {capitalize(title)}
-          </div>
           <div>
             <img src={`${baseUrl}${image}`} alt={title} className="w-full" />
 
@@ -66,14 +59,15 @@ const News = (props) => {
               <AccessTimeIcon style={{ fontSize: "20px" }} />
               <div className="flex justify-between w-full">
                 <div>{`${month} ${day}, ${year}`}</div>
-                <div className="font-bold text-gray-800">
-                  {capitalize(categoryName)}
-                </div>
               </div>
+            </div>
+
+            <div className="font-bold text-3xl text-gray-800 pt-3">
+              {capitalize(title)}
             </div>
           </div>
           <div>
-            <div className="text-justify">{content}</div>
+            <div className="text-justify">{parse(content)}</div>
           </div>
         </div>
       </div>

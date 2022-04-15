@@ -1,18 +1,15 @@
-import { baseUrl } from "../components/auth/auth";
+import axios from "axios";
 
 export const getTrendingNews = async (category = "", limit = 4, page = 1) => {
   let result = {
     news: [],
     nextPage: false,
   };
-  await fetch(
-    `${baseUrl}/api/news/trending?category=${category}&limit=${limit}&page=${page}`,
-    {
-      method: "GET",
-    }
-  )
-    .then(async (res) => {
-      const { status, data } = await res.json();
+
+  await axios
+    .get(`/api/news/trending?category=${category}&limit=${limit}&page=${page}`)
+    .then((res) => {
+      const { status, data } = res.data;
       if (status === "success") {
         result = {
           news: data.newsList,
@@ -30,11 +27,11 @@ export const getNews = async (category = "", limit = 4, page = 1) => {
     news: [],
     nextPage: false,
   };
-  await fetch(
-    `${baseUrl}/api/news?category=${category}&limit=${limit}&page=${page}`
-  )
-    .then(async (res) => {
-      const { status, data } = await res.json();
+
+  await axios
+    .get(`/api/news?category=${category}&limit=${limit}&page=${page}`)
+    .then((res) => {
+      const { status, data } = res.data;
       if (status === "success") {
         result = {
           news: data.newsList,
@@ -53,16 +50,14 @@ export const searchNews = async (value, limit = 8, page = 1) => {
     nextPage: false,
   };
 
-  await fetch(
-    `${baseUrl}/api/news/search?value=${value}&limit=${limit}&page=${page}`
-  )
-    .then(async (res) => {
-      const { status, data } = await res.json();
+  await axios
+    .get(`/api/news/search?value=${value}&limit=${limit}&page=${page}`)
+    .then((res) => {
+      const { status, data } = res.data;
       if (status === "success") {
-        const { news, nextPage } = data;
         result = {
-          news,
-          nextPage,
+          news: data.news,
+          nextPage: data.nextPage,
         };
       }
     })
@@ -73,9 +68,11 @@ export const searchNews = async (value, limit = 8, page = 1) => {
 
 export const getIndividualNews = async (slug) => {
   let news = null;
-  await fetch(`${baseUrl}/api/news/${slug}`)
-    .then(async (res) => {
-      const { status, data } = await res.json();
+
+  await axios
+    .get(`/api/news/${slug}`)
+    .then((res) => {
+      const { status, data } = res.data;
       if (status === "success") {
         news = { ...data.news };
       }

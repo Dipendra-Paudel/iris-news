@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { baseUrl } from "../components/auth/auth";
 import capitalize from "../utils/capitalize";
+
+const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 const FrontPageNewsCard = ({
   image,

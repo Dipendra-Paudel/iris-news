@@ -85,10 +85,6 @@ const Navigation = () => {
 
           {/* Place for ad */}
           <div className="flex-1">
-            {/* <div className="w-full h-20 flex">
-              <GoogleAds slot="7806394673" />
-            </div> */}
-
             <img src={ad1} alt="Ad" className="w-full h-20" />
           </div>
         </div>

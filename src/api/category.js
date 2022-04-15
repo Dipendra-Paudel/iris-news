@@ -1,16 +1,12 @@
-import { baseUrl } from "../components/auth/auth";
+import axios from "axios";
 
 export const getCategories = async () => {
-  let categories;
-  await fetch(`${baseUrl}/api/category`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then(async (res) => {
-      const { data } = await res.json();
-      data && (categories = data.categories);
+  let categories = [];
+
+  await axios
+    .get("/api/category")
+    .then((res) => {
+      categories = res?.data?.data?.categories;
     })
     .catch(() => {});
 

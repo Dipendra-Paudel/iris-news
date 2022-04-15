@@ -1,7 +1,9 @@
 import React from "react";
+import parse from "html-react-parser";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { LinkButton } from "./button";
-import { baseUrl } from "../components/auth/auth";
+
+const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 const CategoryNewsCard = ({ image, title, content, createdAt, slug }) => {
   content = content.length > 150 ? `${content.slice(0, 150)}...` : content;
@@ -13,7 +15,7 @@ const CategoryNewsCard = ({ image, title, content, createdAt, slug }) => {
 
   return (
     <div className="flex-1 md:flex md:space-x-5">
-      <div className="relative flex-1">
+      <div className="flex-1">
         <img
           src={`${baseUrl}${image}`}
           alt={title}
@@ -27,7 +29,7 @@ const CategoryNewsCard = ({ image, title, content, createdAt, slug }) => {
         </div>
 
         <div className="heading-1">{title}</div>
-        <div className="text-sm text-gray-600">{content}</div>
+        <div className="text-sm text-gray-600">{parse(content)}</div>
         <div className="pt-4 md:pt-8">
           <LinkButton label="Read More" url={`/news/${slug}`} />
         </div>
