@@ -23,7 +23,6 @@ const App = () => {
     const getAllCategories = async () => {
       // Call the api to get all the categories
       const categories = await getCategories();
-      console.log(categories);
 
       // When there are categories
       if (categories && categories.length > 0) {
