@@ -49,11 +49,7 @@ const axiosInterceptor = () => {
   axios.defaults.timeout = 20000;
 };
 
-// if (!window.location.href.startsWith("https")) {
-//   window.location = window.location.href.replace(/^http/, "https:");
-// } else if (window.top === window.self) {
 axiosInterceptor();
-
 if (window.self === window.top) {
   ReactDOM.render(
     <Provider store={store}>
