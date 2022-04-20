@@ -1,8 +1,6 @@
 import React from "react";
 import FrontPageNewsCard from "../../common/FrontPageNewsCard";
-
-// Ads
-import ad2 from "../../assets/images/ads/ad-4.gif";
+import GoogleAdsense from "../../common/Adsense";
 
 const commonClass = "space-y-1 md:space-y-0 md:flex";
 
@@ -71,7 +69,9 @@ const MainPage = ({ news = [] }) => {
         {/* Two ads */}
         <div className="space-y-1 md:space-y-0 md:flex md:space-x-1 mt-4">
           <div className="flex-1">
-            <img src={ad2} alt="News ad" className="w-full h-24" />
+            <div className="w-full h-24">
+              <GoogleAdsense />
+            </div>
           </div>
         </div>
       </div>
