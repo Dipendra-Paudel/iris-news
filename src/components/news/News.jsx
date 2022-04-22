@@ -26,7 +26,7 @@ const News = (props) => {
   }, [loading, slug]);
 
   useEffect(() => {
-    !news && !loading && history.current.push("/not-found");
+    !loading && !news.title && history.current.push("/not-found");
   }, [news, loading]);
 
   if (loading) {
@@ -43,33 +43,40 @@ const News = (props) => {
 
   const { title, image, createdAt, content } = news;
 
-  const date = new Date(createdAt);
-  const day = date.getDate();
-  const month = date.toLocaleDateString("default", { month: "long" });
-  const year = date.getFullYear();
+  let day = "",
+    month = "",
+    year = "";
+  if (createdAt) {
+    const date = new Date(createdAt);
+    day = date.getDate();
+    month = date.toLocaleDateString("default", { month: "long" });
+    year = date.getFullYear();
+  }
 
   return (
     <div className="common-style py-10">
       <div className="common-style-2">
-        <div className="space-y-4">
-          <div>
-            <img src={`${baseUrl}${image}`} alt={title} className="w-full" />
+        {news.title && (
+          <div className="space-y-4">
+            <div>
+              <img src={`${baseUrl}${image}`} alt={title} className="w-full" />
 
-            <div className="text-sm text-gray-700 flex items-center space-x-1 pt-2">
-              <AccessTimeIcon style={{ fontSize: "20px" }} />
-              <div className="flex justify-between w-full">
-                <div>{`${month} ${day}, ${year}`}</div>
+              <div className="text-sm text-gray-700 flex items-center space-x-1 pt-2">
+                <AccessTimeIcon style={{ fontSize: "20px" }} />
+                <div className="flex justify-between w-full">
+                  <div>{`${month} ${day}, ${year}`}</div>
+                </div>
+              </div>
+
+              <div className="font-bold text-3xl text-gray-800 pt-3">
+                {capitalize(title)}
               </div>
             </div>
-
-            <div className="font-bold text-3xl text-gray-800 pt-3">
-              {capitalize(title)}
+            <div>
+              <div className="text-justify">{parse(content || "")}</div>
             </div>
           </div>
-          <div>
-            <div className="text-justify">{parse(content)}</div>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
