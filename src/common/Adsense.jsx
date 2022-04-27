@@ -1,10 +1,10 @@
 import AdSense from "react-adsense";
 
-const GoogleAdsense = () => {
+const GoogleAdsense = ({ slot }) => {
   return (
     <AdSense.Google
-      client="ca-pub-7292810486004926"
-      slot="7806394673"
+      client="ca-pub-4957341065826792"
+      slot={slot}
       style={{ display: "block" }}
       format="auto"
       responsive="true"

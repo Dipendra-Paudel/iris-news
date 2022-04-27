@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import Sidebar from "./Sidebar";
+import GoogleAdsense from "../../common/Adsense";
 import capitalize from "../../utils/capitalize";
 import searchQuery from "../../utils/searchQuery";
 import logo from "../../assets/images/logo.jpg";
-import ad1 from "../../assets/images/ads/ad-2.gif";
 
 const Navigation = () => {
   const history = useHistory();
@@ -84,7 +84,7 @@ const Navigation = () => {
 
           {/* Place for ad */}
           <div className="flex-1">
-            <img src={ad1} alt="Ad" className="w-full h-20" />
+            <GoogleAdsense slot="5583907087" />
           </div>
         </div>
 
