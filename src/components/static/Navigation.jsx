@@ -87,7 +87,12 @@ const Navigation = ({ ad }) => {
           {ad?.headerAdImage && (
             <>
               {ad.link ? (
-                <Link to={ad.link} target="_blank" className="w-full">
+                <a
+                  href={ad.link}
+                  rel="noreferrer"
+                  target="_blank"
+                  className="w-full"
+                >
                   <div className="w-full h-24">
                     <img
                       src={`${baseUrl}${ad.headerAdImage}`}
@@ -95,7 +100,7 @@ const Navigation = ({ ad }) => {
                       className="w-full h-full"
                     />
                   </div>
-                </Link>
+                </a>
               ) : (
                 <div className="w-full h-24 relative">
                   <img

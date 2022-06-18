@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
@@ -10,7 +9,12 @@ const RightSidebar = ({ ads = [] }) => {
         {ads.map((ad, index) => (
           <div key={index}>
             {ad.link ? (
-              <Link to={ad.link} target="_blank" className="w-full">
+              <a
+                href={ad.link}
+                rel="noreferrer"
+                target="_blank"
+                className="w-full"
+              >
                 <div className="w-full h-72">
                   <img
                     src={`${baseUrl}${ad.categoryAdImage}`}
@@ -18,7 +22,7 @@ const RightSidebar = ({ ads = [] }) => {
                     className="w-full h-full"
                   />
                 </div>
-              </Link>
+              </a>
             ) : (
               <div className="w-full h-72 relative">
                 <img

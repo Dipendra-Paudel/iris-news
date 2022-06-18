@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import FrontPageNewsCard from "../../common/FrontPageNewsCard";
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
@@ -71,7 +70,12 @@ const MainPage = ({ news = [], ad }) => {
         {ad?.heroSectionAdImage && (
           <div className="pt-4">
             {ad.link ? (
-              <Link to={ad.link} target="_blank" className="w-full">
+              <a
+                href={ad.link}
+                rel="noreferrer"
+                target="_blank"
+                className="w-full"
+              >
                 <div className="w-full h-24">
                   <img
                     src={`${baseUrl}${ad.heroSectionAdImage}`}
@@ -79,7 +83,7 @@ const MainPage = ({ news = [], ad }) => {
                     className="w-full h-full"
                   />
                 </div>
-              </Link>
+              </a>
             ) : (
               <div className="w-full h-24 relative">
                 <img
