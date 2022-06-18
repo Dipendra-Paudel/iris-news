@@ -7,9 +7,10 @@ import Sidebar from "./Sidebar";
 import capitalize from "../../utils/capitalize";
 import searchQuery from "../../utils/searchQuery";
 import logo from "../../assets/images/logo.jpg";
-import ad1 from "../../assets/images/ads/ad-2.gif";
 
-const Navigation = () => {
+const baseUrl = process.env.REACT_APP_API_BASE_URL;
+
+const Navigation = ({ ad }) => {
   const history = useHistory();
   const [search, setSearch] = useState(() => {
     try {
@@ -82,21 +83,41 @@ const Navigation = () => {
             )}
           </div>
 
-          {/* Place for ad */}
-          <div className="flex-1">
-            <img src={ad1} alt="Ad" className="w-full h-20" />
-          </div>
+          {/* ======================= Ad Area ======================= */}
+          {ad?.headerAdImage && (
+            <>
+              {ad.link ? (
+                <Link to={ad.link} target="_blank" className="w-full">
+                  <div className="w-full h-24">
+                    <img
+                      src={`${baseUrl}${ad.headerAdImage}`}
+                      alt={ad.link}
+                      className="w-full h-full"
+                    />
+                  </div>
+                </Link>
+              ) : (
+                <div className="w-full h-24 relative">
+                  <img
+                    src={`${baseUrl}${ad.headerAdImage}`}
+                    alt={ad.link}
+                    className="w-full h-full"
+                  />
+                </div>
+              )}
+            </>
+          )}
         </div>
 
         {/* All the navigation options */}
         <div className="flex justify-between items-center">
           <div className="hidden md:flex md:text-sm lg:text-base md:space-x-0 flex-wrap space-x-4 font-semibold text-gray-700">
             {categories.map((category, index) => {
-              const { categoryName, slug } = category;
+              const { categoryName, _id } = category;
               return (
                 <NavLink
                   key={index}
-                  to={categoryName === "Home" ? "/" : `/category/${slug}`}
+                  to={categoryName === "Home" ? "/" : `/category/${_id}`}
                   className="pt-3 pb-2 px-2 lg:px-4"
                   activeClassName="border-b-4 lg:border-b-4 border-blue-600"
                   exact

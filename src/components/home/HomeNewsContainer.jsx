@@ -7,31 +7,41 @@ import Loader from "../../common/loader";
 import { ADD_NEWS } from "../../store/actions/actionTypes";
 import capitalize from "../../utils/capitalize";
 
-const HomeNewsContainer = ({ slug, _id, categoryName, trendingNews = [] }) => {
+const HomeNewsContainer = ({ _id, categoryName, trendingNews = [] }) => {
   const [news, setNews] = useState([]);
   const fetch = trendingNews.length > 0;
   const [loading, setLoading] = useState(!fetch);
   const dispatch = useRef();
   dispatch.current = useDispatch();
 
+  const [mounted, setMounted] = useState(true);
+
+  useEffect(() => {
+    return () => {
+      setMounted(false);
+    };
+  }, []);
+
   useEffect(() => {
     const getNewsAsync = async () => {
       const { news } = await getNews(_id, 2, 1);
-      setNews(news);
-      if (news.length > 0) {
-        dispatch.current({
-          type: ADD_NEWS,
-          payload: {
-            category: slug.split("-").join(""),
-            news,
-          },
-        });
+      if (mounted) {
+        setNews(news);
+        if (news.length > 0) {
+          dispatch.current({
+            type: ADD_NEWS,
+            payload: {
+              category: _id.split("-").join(""),
+              news,
+            },
+          });
+        }
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     !fetch && getNewsAsync();
-  }, [_id, slug, fetch]);
+  }, [_id, fetch, mounted]);
 
   if (loading) {
     return (
@@ -53,7 +63,7 @@ const HomeNewsContainer = ({ slug, _id, categoryName, trendingNews = [] }) => {
       </div>
       <div className="pt-6">
         <Link
-          to={fetch ? "/trending" : `/category/${slug}`}
+          to={fetch ? "/trending" : `/category/${_id}`}
           onClick={() => window.scrollTo(0, 0)}
           className="border text-gray-600 font-semibold border-gray-300 text-center hover:text-blue-600 w-full block py-3"
         >

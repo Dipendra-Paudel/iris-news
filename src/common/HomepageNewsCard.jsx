@@ -5,7 +5,7 @@ import { LinkButton } from "./button";
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
-const HomePageNewsCard = ({ image, title, content, createdAt, slug }) => {
+const HomePageNewsCard = ({ image, title, content, createdAt, _id }) => {
   const date = new Date(createdAt);
   const day = date.getDate();
   const month = date.toLocaleDateString("default", { month: "long" });
@@ -34,7 +34,7 @@ const HomePageNewsCard = ({ image, title, content, createdAt, slug }) => {
           {parse(content.slice(0, 50))}...
         </div>
         <div className="py-3">
-          <LinkButton label="Read More" url={`/news/${slug}`} />
+          <LinkButton label="Read More" url={`/news/${_id}`} />
         </div>
       </div>
     </div>

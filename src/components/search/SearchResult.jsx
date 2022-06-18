@@ -14,17 +14,27 @@ const SearchResult = ({ query }) => {
   const [nextPage, setNextPage] = useState(false);
   const [fetchingMore, setFetchingMore] = useState(false);
 
+  const [mounted, setMounted] = useState(true);
+
+  useEffect(() => {
+    return () => {
+      setMounted(false);
+    };
+  }, []);
+
   useEffect(() => {
     const getSearchNews = async () => {
       const { news, nextPage } = await searchNews(query, 6, page);
-      setNextPage(nextPage);
-      setNews((n) => (page === 1 ? [...news] : [...n, ...news]));
-      setLoading(false);
-      setFetchingMore(false);
+      if (mounted) {
+        setNextPage(nextPage);
+        setNews((n) => (page === 1 ? [...news] : [...n, ...news]));
+        setLoading(false);
+        setFetchingMore(false);
+      }
     };
 
     (fetchingMore || loading) && getSearchNews();
-  }, [loading, page, query, fetchingMore]);
+  }, [loading, page, query, fetchingMore, mounted]);
 
   useEffect(() => {
     history.current.listen(() => {

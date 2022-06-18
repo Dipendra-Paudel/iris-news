@@ -2,6 +2,9 @@ import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import searchQuery from "../../utils/searchQuery";
 import SearchResult from "./SearchResult";
+import Navigation from "../static/Navigation";
+import TopBar from "../static/TopBar";
+import Footer from "../static/Footer";
 
 const SearchPage = () => {
   const history = useRef();
@@ -14,7 +17,14 @@ const SearchPage = () => {
 
   return (
     <div>
-      <SearchResult query={query} />
+      <TopBar />
+      <Navigation ad={{}} />
+
+      <div>
+        <SearchResult query={query} />
+      </div>
+
+      <Footer />
     </div>
   );
 };

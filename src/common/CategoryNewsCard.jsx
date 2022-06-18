@@ -5,7 +5,7 @@ import { LinkButton } from "./button";
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
-const CategoryNewsCard = ({ image, title, content, createdAt, slug }) => {
+const CategoryNewsCard = ({ image, title, content, createdAt, _id }) => {
   content = content.length > 150 ? `${content.slice(0, 150)}...` : content;
 
   const date = new Date(createdAt);
@@ -31,7 +31,7 @@ const CategoryNewsCard = ({ image, title, content, createdAt, slug }) => {
         <div className="heading-1">{title}</div>
         <div className="text-sm text-gray-600">{parse(content)}</div>
         <div className="pt-4 md:pt-8">
-          <LinkButton label="Read More" url={`/news/${slug}`} />
+          <LinkButton label="Read More" url={`/news/${_id}`} />
         </div>
       </div>
     </div>

@@ -40,11 +40,11 @@ const Footer = () => {
               </div>
               <div className="flex flex-col space-y-1.5">
                 {categories.slice(0, 4).map((category, index) => {
-                  const { categoryName, slug } = category;
+                  const { categoryName, _id } = category;
                   return (
                     <Link
                       key={index}
-                      to={`/category/${slug}`}
+                      to={`/category/${_id}`}
                       onClick={() => window.scrollTo(0, 0)}
                     >
                       {capitalize(categoryName)}

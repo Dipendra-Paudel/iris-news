@@ -1,11 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import Navigation from "./components/static/Navigation";
-import TopBar from "./components/static/TopBar";
 import Home from "./components/home/home";
 import Category from "./components/category/Category";
-import Footer from "./components/static/Footer";
 import { getCategories } from "./api/category";
 import News from "./components/news/News";
 import { ADD_CATEGORY } from "./store/actions/actionTypes";
@@ -60,17 +57,14 @@ const App = () => {
 
   return (
     <div>
-      <TopBar />
-      <Navigation />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/not-found" component={NotFound} />
-        <Route exact path="/category/:slug" component={Category} />
-        <Route exact path="/news/:slug" component={News} />
+        <Route exact path="/category/:id" component={Category} />
+        <Route exact path="/news/:id" component={News} />
         <Route exact path="/search" component={SearchPage} />
         <Redirect to="/not-found" />
       </Switch>
-      <Footer />
     </div>
   );
 };

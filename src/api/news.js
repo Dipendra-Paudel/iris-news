@@ -66,11 +66,11 @@ export const searchNews = async (value, limit = 8, page = 1) => {
   return result;
 };
 
-export const getIndividualNews = async (slug) => {
+export const getIndividualNews = async (id) => {
   let news = null;
 
   await axios
-    .get(`/api/news/${slug}`)
+    .get(`/api/news/${id}`)
     .then((res) => {
       const { status, data } = res.data;
       if (status === "success") {

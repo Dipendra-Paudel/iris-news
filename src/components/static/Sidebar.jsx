@@ -33,12 +33,12 @@ const Sidebar = ({ toggled, categories, changeToggled }) => {
 
         <div className="px-6 pt-4 flex flex-col space-y-4">
           {categories.map((category, index) => {
-            const { categoryName, slug } = category;
+            const { categoryName, _id } = category;
 
             return (
               <NavLink
                 key={index}
-                to={categoryName === "Home" ? "/" : `/category/${slug}`}
+                to={categoryName === "Home" ? "/" : `/category/${_id}`}
                 onClick={handleSidebarLinkClick}
                 activeClassName="text-blue-600 "
                 className="font-semibold border-b border-gray-200 text-gray-500"

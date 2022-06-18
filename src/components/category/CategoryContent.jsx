@@ -14,17 +14,27 @@ const CategoryContent = ({ categoryId }) => {
   const [nextPage, setNextPage] = useState(false);
   const [fetchingMore, setFetchingMore] = useState(false);
 
+  const [mounted, setMounted] = useState(true);
+
+  useEffect(() => {
+    return () => {
+      setMounted(false);
+    };
+  }, []);
+
   useEffect(() => {
     const getNewsAsync = async () => {
       const { news, nextPage } = await getNews(categoryId, 4, page);
-      setNews((n) => (page > 1 ? [...n, ...news] : [...news]));
-      setNextPage(nextPage);
-      setLoading(false);
-      setFetchingMore(false);
+      if (mounted) {
+        setNews((n) => (page > 1 ? [...n, ...news] : [...news]));
+        setNextPage(nextPage);
+        setLoading(false);
+        setFetchingMore(false);
+      }
     };
 
     (fetchingMore || loading) && getNewsAsync();
-  }, [categoryId, page, loading, fetchingMore]);
+  }, [categoryId, page, loading, fetchingMore, mounted]);
 
   useEffect(() => {
     history.current.listen((l) => {
@@ -63,9 +73,7 @@ const CategoryContent = ({ categoryId }) => {
       )}
 
       {news.length === 0 && (
-        <div className="py-10 text-lg text-center">
-          No news found in this category
-        </div>
+        <div className="text-2xl">No news found in this category</div>
       )}
     </div>
   );

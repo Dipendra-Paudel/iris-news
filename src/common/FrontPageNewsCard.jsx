@@ -10,7 +10,7 @@ const FrontPageNewsCard = ({
   category,
   createdAt,
   type,
-  slug,
+  _id,
 }) => {
   const date = new Date(createdAt);
   const day = date.getDate();
@@ -26,7 +26,7 @@ const FrontPageNewsCard = ({
       }`}
     >
       <Link
-        to={`/news/${slug}`}
+        to={`/news/${_id}`}
         className="w-full h-full"
         onClick={() => window.scrollTo(0, 0)}
       >
