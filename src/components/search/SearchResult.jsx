@@ -53,13 +53,11 @@ const SearchResult = ({ query }) => {
   }
 
   return (
-    <div className="common-style py-16">
+    <div className="common-style py-10">
       <div className="max-w-screen-xl mx-auto">
         {news.length > 0 && (
           <div>
-            <div className="text-2xl pb-4">
-              Search Results for "<b className="text-gray-700">{query}</b>"
-            </div>
+            <div className="text-2xl pb-4 font-semibold">Search Results:</div>
             <div className="space-y-8">
               {news.map((n, index) => (
                 <CategoryNewsCard key={index} {...n} />
@@ -81,8 +79,8 @@ const SearchResult = ({ query }) => {
           </div>
         )}
         {news.length === 0 && (
-          <div className="py-10 text-lg text-center">
-            No news found for "<b className="text-gray-700">{query}</b>"
+          <div className="py-10 text-2xl text-center font-semibold">
+            No Search Result:
           </div>
         )}
       </div>
