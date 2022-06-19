@@ -24,7 +24,7 @@ const CategoryContent = ({ categoryId }) => {
 
   useEffect(() => {
     const getNewsAsync = async () => {
-      const { news, nextPage } = await getNews(categoryId, 4, page);
+      const { news, nextPage } = await getNews(categoryId, 10, page);
       if (mounted) {
         setNews((n) => (page > 1 ? [...n, ...news] : [...news]));
         setNextPage(nextPage);

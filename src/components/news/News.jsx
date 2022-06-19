@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import parse from "html-react-parser";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { getIndividualNews } from "../../api/news";
@@ -82,9 +82,10 @@ const News = (props) => {
               {adBeforePost?.adBeforePostImage && (
                 <div>
                   {adBeforePost.link ? (
-                    <Link
-                      to={adBeforePost.link}
+                    <a
+                      href={adBeforePost.link}
                       target="_blank"
+                      rel="noreferrer"
                       className="w-full"
                     >
                       <div className="w-full h-24">
@@ -94,7 +95,7 @@ const News = (props) => {
                           className="w-full h-full"
                         />
                       </div>
-                    </Link>
+                    </a>
                   ) : (
                     <div className="w-full h-24 relative">
                       <img
@@ -141,8 +142,9 @@ const News = (props) => {
               {adAfterPost?.adAfterPostImage && (
                 <div>
                   {adAfterPost.link ? (
-                    <Link
-                      to={adAfterPost.link}
+                    <a
+                      href={adAfterPost.link}
+                      rel="noreferrer"
                       target="_blank"
                       className="w-full"
                     >
@@ -153,7 +155,7 @@ const News = (props) => {
                           className="w-full h-full"
                         />
                       </div>
-                    </Link>
+                    </a>
                   ) : (
                     <div className="w-full h-24 relative">
                       <img

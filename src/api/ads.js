@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export const getAd = async (slug) => {
+export const getAd = async (id) => {
   let result = {};
 
   await axios
-    .post(`/ads/individual-ad`, { slug })
+    .post(`/ads/individual-ad`, { id })
     .then((res) => {
       const { status, data } = res.data;
       result.status = status;

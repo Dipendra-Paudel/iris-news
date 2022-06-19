@@ -19,7 +19,7 @@ const Category = (props) => {
   const storedNews = useSelector((store) => store.news);
   const activeCategory = categories.find((c) => c._id === id);
 
-  const { _id: categoryId, slug } = activeCategory || {};
+  const { _id: categoryId } = activeCategory || {};
 
   const [ads, setAds] = useState({});
 
@@ -56,7 +56,7 @@ const Category = (props) => {
   useEffect(() => {
     setAds({});
     const getAds = async () => {
-      const { status, ad } = await getAd(slug);
+      const { status, ad } = await getAd(categoryId);
       if (status === "success" && mounted) {
         setAds(ad);
       }
