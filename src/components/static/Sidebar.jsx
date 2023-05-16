@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import capitalize from "../../utils/capitalize";
-import logo from "../../assets/images/logo.jpg";
+import logo from "../../assets/images/logo.png";
 
 const Sidebar = ({ toggled, categories, changeToggled }) => {
   const handleSidebarLinkClick = () => {
@@ -23,7 +23,7 @@ const Sidebar = ({ toggled, categories, changeToggled }) => {
             style={{ minWidth: "300px" }}
           >
             <Link to="/">
-              <img src={logo} alt="Iris News Logo" className="h-28 mx-auto" />
+              <img src={logo} alt="Logo" className="h-28 mx-auto" />
             </Link>
             <div onClick={() => changeToggled(false)}>
               <CloseIcon style={{ fontSize: "40px" }} />

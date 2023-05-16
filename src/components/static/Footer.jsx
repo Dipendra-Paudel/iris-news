@@ -6,7 +6,7 @@ import capitalize from "../../utils/capitalize";
 import FacebookIcon from "../../icons/facebook";
 import InstagramIcon from "../../icons/instagram";
 import TwitterIcon from "../../icons/twitter";
-import logo from "../../assets/images/logo.jpg";
+import logo from "../../assets/images/logo.png";
 
 const facebookUrl = "https://www.facebook.com";
 const instagramUrl = "https://www.instagram.com";
@@ -23,11 +23,7 @@ const Footer = () => {
           <div className="text-center md:text-left grid gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-3">
             <div>
               <div>
-                <img
-                  src={logo}
-                  alt="Iris News Logo"
-                  className="h-28 mx-auto md:mx-0"
-                />
+                <img src={logo} alt="Logo" className="h-28 mx-auto md:mx-0" />
               </div>
               <div className="text-s">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.

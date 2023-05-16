@@ -6,7 +6,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Sidebar from "./Sidebar";
 import capitalize from "../../utils/capitalize";
 import searchQuery from "../../utils/searchQuery";
-import logo from "../../assets/images/logo.jpg";
+import logo from "../../assets/images/logo.png";
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
@@ -70,11 +70,7 @@ const Navigation = ({ ad }) => {
         <div className="flex flex-col-reverse md:flex-row md:items-center md:space-x-10 md:py-2">
           <div className="flex justify-between items-center px-4 py-2 md:flex-shrink-0">
             <Link to="/">
-              <img
-                src={logo}
-                alt="Iris News Logo"
-                className="h-20 md:h-28 mx-auto"
-              />
+              <img src={logo} alt="Logo" className="h-20 md:h-28 mx-auto" />
             </Link>
             {width < 768 && (
               <div onClick={changeToggled}>
